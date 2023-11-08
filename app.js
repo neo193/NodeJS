@@ -1,8 +1,20 @@
-const Logger = require('./logger')
-const logger = new Logger();
+// const Logger = require('./logger')
+const http = require('http');
+// const logger = new Logger();
 
-logger.on('Logging', (args) => {
-    console.log('Listener invoked', args)
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        res.write("Hello World");
+        res.end();
+    }
 })
 
-logger.log("Logging check");
+server.listen(8080);
+
+console.log("Listening on port 8080...");
+
+// logger.on('Logging', (args) => {
+//     console.log('Listener invoked', args)
+// })
+
+// logger.log("Logging check");
